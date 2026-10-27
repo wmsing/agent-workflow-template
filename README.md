@@ -35,16 +35,16 @@ Fill `TODO`s in `AGENTS.md` and `.cursor/rules/project.md`.
 
 Copy `AGENTS.md`, `CLAUDE.md` (symlink or copy), `.cursor/rules/`, and optionally `docs/spec/task_TEMPLATE.md`. Commit so everyone gets the same map.
 
-## Based on
+## Aligned with
 
-Not an ISO standard — this follows the common agent-repo pattern and vendor docs:
+This template was **extracted from how I already run agents in real repos**, then checked against common docs — not designed by copying a guide first.
 
-| Practice in this repo | Source |
+| What we do | Matches |
 |---|---|
-| Root `AGENTS.md` as the agent README | [agents.md](https://agents.md/) (cross-client convention) |
-| Cursor project rules + `AGENTS.md` | [Cursor Rules](https://cursor.com/docs/rules) |
-| Short always-on map; prefer scoped tests | [Claude Code best practices](https://code.claude.com/docs/en/best-practices) |
-| `CLAUDE.md` → same map (symlink / import) | Claude Code loads `CLAUDE.md`; keep one source of truth |
-| Spec → implement → verify (briefs + acceptance) | Same loop as “beyond vibe coding” engineering guides, e.g. [Vonage](https://developer.vonage.com/en/blog/beyond-vibe-coding-best-practices-2026) |
+| Root `AGENTS.md` as the agent map | [agents.md](https://agents.md/) convention |
+| `.cursor/rules` + `AGENTS.md` | [Cursor Rules](https://cursor.com/docs/rules) |
+| Short always-on map; scoped tests by default | [Claude Code best practices](https://code.claude.com/docs/en/best-practices) |
+| One map, `CLAUDE.md` symlink | Claude Code reads `CLAUDE.md`; avoid two sources of truth |
+| Brief → `@` → scoped accept | Same engineering loop as “beyond vibe coding” write-ups, e.g. [Vonage](https://developer.vonage.com/en/blog/beyond-vibe-coding-best-practices-2026) |
 
-**One-liner if asked:** *Based on the AGENTS.md convention plus Cursor and Claude Code official guidance: checked-in agent map and rules, task briefs for non-trivial work, scoped acceptance — refined from how I actually run agents in my repos.*
+**One-liner if asked:** *I pulled this from my day-to-day agent workflow in real projects; it lines up with the AGENTS.md convention and Cursor / Claude Code guidance (checked-in map + rules, task briefs, scoped acceptance).*
