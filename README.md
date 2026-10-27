@@ -47,5 +47,3 @@ Extracted from live repos, then checked against:
 | Short map; only what code can’t show; scoped checks | [Claude Code best practices](https://code.claude.com/docs/en/best-practices) |
 | Spec/brief → fresh implement; pass/fail checks; hooks for no-exception rules | Same Claude BP pillars (visibility, verifiable checks, deterministic enforce) |
 | `.cursor/rules` + `AGENTS.md` | [Cursor Rules](https://cursor.com/docs/rules) |
-
-**One-liner if asked:** *I use a short checked-in agent map and task briefs with executable acceptance in real projects; it matches the AGENTS.md format and Claude Code / Cursor guidance (what code can’t show, verifiable checks, hard rules via deny/hooks — not prose alone).*
