@@ -16,6 +16,16 @@ Pulled out of live repos as a reusable base — clone for a new project, or copy
 
 Edit **only** `AGENTS.md` — don’t maintain two copies of the map.
 
+## Workflow
+
+1. **Start** — New project: clone this template and fill `TODO`s. Existing project: keep `AGENTS.md` + `.cursor/rules` at the repo root.
+2. **Brief** (non-trivial work) — Copy `docs/spec/task_TEMPLATE.md` → `task_xxx.md`: goal, non-goals, files to touch, acceptance commands.
+3. **Run** — In Cursor / Claude Code, `@` that brief. The agent reads `AGENTS.md` / rules first, then changes only what the brief names.
+4. **Accept** — Run only the scoped tests from the brief (or related to the change). Full suite only when someone asks.
+5. **Close** — Small fixes can finish in chat. After a larger piece lands on main, keep the brief as history and open a new `task_*.md` for the next piece.
+
+One-line tweaks: skip the brief, say what to change; `AGENTS.md` and rules still enforce bans. MCP: connect locally; never commit tokens.
+
 ## New project
 
 ```bash
@@ -43,9 +53,3 @@ Commit so every teammate and every agent session reads the same map.
 MCP servers stay in local Cursor / Claude Desktop settings — never commit tokens.
 
 If the project expects certain connectors, list them under **MCP** in `AGENTS.md` (allowed vs forbidden). Each person connects their own account.
-
-## How we use it
-
-1. Files live in git → shared source of truth.
-2. Non-trivial features get a `docs/spec/task_*.md` (goal / non-goals / files / acceptance) before the agent runs.
-3. Default acceptance = **scoped** tests for the change; full suite only when someone asks.
