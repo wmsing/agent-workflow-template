@@ -41,7 +41,7 @@ This template was **extracted from how I already run agents in real repos**, the
 
 | What we do | Matches |
 |---|---|
-| Root `AGENTS.md` as the agent map | [agents.md](https://agents.md/) convention |
+| Root `AGENTS.md` sections (overview, build/test, style, testing, security, extra workflow) | [agents.md](https://agents.md/) “Cover what matters” |
 | `.cursor/rules` + `AGENTS.md` | [Cursor Rules](https://cursor.com/docs/rules) |
 | Short always-on map; scoped tests by default | [Claude Code best practices](https://code.claude.com/docs/en/best-practices) |
 | One map, `CLAUDE.md` symlink | Claude Code reads `CLAUDE.md`; avoid two sources of truth |

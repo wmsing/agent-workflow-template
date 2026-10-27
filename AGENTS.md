@@ -1,50 +1,83 @@
 # Agent map
 
-## Scope
+Instructions for coding agents. Humans use `README.md`; agents use this file ([AGENTS.md](https://agents.md/) format).
 
-Only implement what the user names in chat and/or in a `docs/spec/task_*.md` they `@` mention.
+## Project overview
 
-Do **not** read or commit real `.env*` / secrets / credentials.
-Do **not** expand scope (scrapers, new services, refactors) unless the brief says so.
-DB / schema migrations need an up/down plan before any change.
+<!-- TODO: 1–3 sentences: what this repo is, main stack, high-level layout -->
 
-One-off details stay in chat. The latest instruction in chat wins over older chat; the brief wins over vague chat when both exist.
+- Stack: <!-- e.g. Python/FastAPI + React, Next.js, Flutter… -->
+- Layout: <!-- e.g. `backend/`, `frontend/`, `docs/spec/` -->
+- Key paths: see **Key files** below
+- Non-trivial work: prefer a `docs/spec/task_*.md` brief and `@` it in chat
 
-## Default workflow
+## Build and test commands
+
+```bash
+# TODO: install / run / lint / test for this project
+# install: …
+# dev: …
+# lint: …
+# test (scoped example): …
+# test (full suite — only when the user asks): …
+```
+
+**Default:** run only tests related to the change (paths you touched or the brief names). Do **not** run the full suite unless the user explicitly asks.
+
+## Code style guidelines
+
+<!-- TODO: only project-specific rules agents cannot infer from lint/config -->
+
+- Follow existing lint/format config; match neighboring files when none exists
+- Prefer small diffs; no drive-by refactors
+- <!-- e.g. TypeScript strict, quote style, functional patterns… -->
+
+## Testing instructions
+
+- Add or update tests for behavior you change
+- Prefer a single focused test file / filter over the whole suite
+- <!-- TODO: CI path, e.g. `.github/workflows/…`; how to run one test -->
+- Match any gold sample or checklist in the brief or latest chat
+
+## Security considerations
+
+- Do **not** read or commit real `.env*` / secrets / credentials
+- Do **not** modify auth, payment, or production secret wiring unless the user names the file and confirms
+- DB / schema migrations need an up/down plan before any change
+- Irreversible actions (force-push, deploy, send money/mail, install new MCP) need explicit user confirmation first
+- See also `.cursor/rules/llm-agent-safety.mdc`
+
+## Extra instructions and workflow
+
+### Scope
+
+Only implement what the user names in chat and/or in a `docs/spec/task_*.md` they `@` mention. Do **not** expand scope (scrapers, new services, broad refactors) unless the brief says so. One-off details stay in chat; the brief wins over vague chat when both exist.
+
+### Default workflow
 
 1. Read `README.md`, this file, `.cursor/rules/project.md`, and the relevant `docs/spec/task_*.md`
 2. Change only the key files the brief names (or the smallest set needed)
 3. Add or update tests for behavior you change
-4. Acceptance: **default = only tests related to this change**. Do **not** run the full suite unless the user explicitly asks.
+4. Run scoped acceptance commands (above)
 
-```bash
-# TODO: replace with this project's lint + scoped test commands
-# example (Python):
-#   cd backend && uv sync --extra dev && uv run ruff check .
-#   uv run pytest -q tests/test_thing_you_changed.py
-# example (Node):
-#   npm run lint && npm test -- path/to/related.test.ts
-```
+### Key files
 
-## Key files (repo root)
-
-<!-- TODO: list the real paths for this project -->
+<!-- TODO: list real entry / API / UI / domain paths -->
 
 - Specs / briefs: `docs/spec/task_*.md`
 - Rules: `.cursor/rules/project.md`, `.cursor/rules/llm-agent-safety.mdc`
-- <!-- App entry / API / UI / core domain files… -->
 
-## MCP
+### Git / PR (optional)
 
-<!-- TODO: list expected connectors; leave empty if none -->
+<!-- TODO: commit message format, PR checklist, branch naming — or delete this subsection -->
+
+### MCP
+
+<!-- TODO: expected connectors; leave empty if none -->
 
 - Allowed (when connected locally): e.g. GitHub (PRs), browser (UI check)
-- Forbidden: trading / payment send, reading production secrets, installing new MCP without user confirmation
+- Forbidden: payment/trading send, reading production secrets, installing new MCP without user confirmation
 
-## Acceptance
+### Monorepo
 
-```bash
-# TODO: same commands as Default workflow §4
-```
-
-Match any gold sample or acceptance checklist in the brief or latest chat.
+If needed, add nested `AGENTS.md` files under packages; the closest file to the edited path wins ([agents.md](https://agents.md/)).
