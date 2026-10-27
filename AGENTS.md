@@ -44,7 +44,7 @@ Prose reminders only. **Hard bans** (no `.env`, no force-push, etc.) must also b
 
 ## Extra instructions and workflow
 
-1. Read this file, `.cursor/rules/project.md`, and any `@` brief
+1. Read this file, `.cursor/rules/project.mdccc`, and any `@` brief
 2. Change only what the brief / user named
 3. Run scoped checks until green
 4. Full suite only when asked

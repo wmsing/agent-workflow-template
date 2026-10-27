@@ -1,3 +1,8 @@
+---
+description: Project acceptance commands, bans, and style
+alwaysApply: true
+---
+
 # Project rules
 
 ## Acceptance (after code changes, run at least one)
