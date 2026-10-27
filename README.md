@@ -9,7 +9,7 @@ Day-to-day Cursor / Claude Code setup I use in real repos: short agent map, safe
 | `AGENTS.md` | Short agent map (source of truth). Edit this only. |
 | `CLAUDE.md` | Symlink → `AGENTS.md`. Windows: copy if the link fails. |
 | `.cursor/rules/llm-agent-safety.mdc` | Always-on safety text (pair with deny/hooks for hard bans) |
-| `.cursor/rules/project.mdccc` | Acceptance commands + bans (fill in) |
+| `.cursor/rules/project.mdc` | Acceptance commands + bans (fill in) |
 | `docs/spec/task_TEMPLATE.md` | Brief → real `task_*.md` that agents `@` |
 
 ## Workflow
@@ -31,7 +31,7 @@ git clone https://github.com/wmsing/agent-workflow-template.git my-app
 cd my-app && rm -rf .git && git init
 ```
 
-Fill `TODO`s in `AGENTS.md` and `.cursor/rules/project.mdccc`.
+Fill `TODO`s in `AGENTS.md` and `.cursor/rules/project.mdc`.
 
 ## Existing project
 
