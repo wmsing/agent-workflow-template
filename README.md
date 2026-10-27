@@ -47,7 +47,3 @@ Document which MCPs this project expects in `AGENTS.md` → **MCP** section (e.g
 1. These files live in git → one source of truth.
 2. Feature work goes through `docs/spec/task_*.md` (goal / non-goals / files / acceptance).
 3. Default tests = **scoped** to the change; full suite only when someone asks.
-
-## Resume / interview one-liner
-
-*Designed a reusable agent-ready repo template (`AGENTS.md` / Cursor rules / task specs) so coding agents follow shared scope, file maps, and scoped acceptance without re-prompting.*
