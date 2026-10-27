@@ -8,11 +8,13 @@ Pulled out of live repos as a reusable base — clone for a new project, or copy
 
 | Path | Role |
 |---|---|
-| `AGENTS.md` | Agent map: scope, key files, default acceptance |
-| `CLAUDE.md` | Same map for Claude Code (keep in sync with `AGENTS.md`) |
+| `AGENTS.md` | Agent map: scope, key files, default acceptance (source of truth) |
+| `CLAUDE.md` | Symlink → `AGENTS.md` (Claude Code). On Windows, if the link doesn’t work, copy `AGENTS.md` to `CLAUDE.md`. |
 | `.cursor/rules/llm-agent-safety.mdc` | Always-on safety (secrets, destructive shell, HITL) |
 | `.cursor/rules/project.md` | Project acceptance commands + bans (fill in) |
 | `docs/spec/task_TEMPLATE.md` | One-task brief; agents `@` the filled-in `task_*.md` |
+
+Edit **only** `AGENTS.md` — don’t maintain two copies of the map.
 
 ## New project
 
@@ -24,13 +26,13 @@ cd my-app
 rm -rf .git && git init
 ```
 
-Fill the `TODO`s in `AGENTS.md`, `CLAUDE.md`, and `.cursor/rules/project.md` (paths, lint/test commands, MCP list).
+Fill the `TODO`s in `AGENTS.md` and `.cursor/rules/project.md` (paths, lint/test commands, MCP list).
 
 ## Existing project
 
 Copy into the repo root:
 
-- `AGENTS.md`, `CLAUDE.md`
+- `AGENTS.md` (+ `CLAUDE.md` symlink, or a copy on Windows)
 - `.cursor/rules/`
 - `docs/spec/task_TEMPLATE.md` (then keep writing real `docs/spec/task_*.md` per feature)
 
