@@ -12,15 +12,15 @@
 
 - `path/to/file` — why
 
-## Acceptance
+## Acceptance (must be pass/fail)
 
 ```bash
-# Scoped commands the agent must run
+# Commands the agent runs until green (lint / scoped test / build)
 ```
 
-- [ ] Behavior / UI checklist item
+- [ ] Behavior / UI checklist (screenshot OK if no automated check)
 - [ ] No secrets committed
 
 ## Notes
 
-<!-- Edge cases, gold samples, links -->
+<!-- Env vars, deploy quirks, meeting decisions — things not visible in code -->

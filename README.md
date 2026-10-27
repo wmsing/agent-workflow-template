@@ -1,26 +1,28 @@
 # Agent workflow template
 
-Day-to-day Cursor / Claude Code setup I use in real repos: agent map, safety rules, and per-feature briefs. Clone for a new project, or copy into an existing one so the team shares one workflow.
+Day-to-day Cursor / Claude Code setup I use in real repos: short agent map, safety rules, and per-feature briefs with **executable** acceptance.
 
 ## What's included
 
 | Path | Role |
 |---|---|
-| `AGENTS.md` | Agent map (source of truth). Edit this only. |
+| `AGENTS.md` | Short agent map (source of truth). Edit this only. |
 | `CLAUDE.md` | Symlink → `AGENTS.md`. Windows: copy if the link fails. |
-| `.cursor/rules/llm-agent-safety.mdc` | Always-on safety (secrets, destructive shell, HITL) |
+| `.cursor/rules/llm-agent-safety.mdc` | Always-on safety text (pair with deny/hooks for hard bans) |
 | `.cursor/rules/project.md` | Acceptance commands + bans (fill in) |
-| `docs/spec/task_TEMPLATE.md` | Brief template → real `task_*.md` that agents `@` |
+| `docs/spec/task_TEMPLATE.md` | Brief → real `task_*.md` that agents `@` |
 
 ## Workflow
 
-1. **Start** — New: clone this repo, fill `TODO`s. Existing: put `AGENTS.md` + `.cursor/rules` at the root.
-2. **Brief** — Non-trivial work: copy `task_TEMPLATE.md` → `task_xxx.md` (goal, non-goals, files, acceptance).
-3. **Run** — `@` the brief in Cursor / Claude Code; agent follows map + brief only.
-4. **Accept** — Scoped tests for the change; full suite only when asked.
-5. **Close** — Keep the brief as history; next piece gets a new `task_*.md`.
+1. **Start** — New: clone, fill `TODO`s. Existing: root `AGENTS.md` + `.cursor/rules`.
+2. **Brief** — Unclear: brainstorm with the agent → write `task_xxx.md`, then implement in a **fresh** session. Clear non-trivial work: write the brief and `@` it.
+3. **Run** — `@` brief + files/screenshots/command output the agent cannot see in code. Stay inside the brief.
+4. **Accept** — Executable checks (scoped test / lint / build) until green; full suite only when asked.
+5. **Close** — Keep the brief; next piece gets a new `task_*.md`. `/clear` or new chat between unrelated work.
 
-One-line tweaks: skip the brief. MCP: connect locally, never commit tokens; list expected connectors under **MCP** in `AGENTS.md`.
+One-line tweaks: skip the brief. MCP: local only, never commit tokens.
+
+**Hard rules** (no `.env`, must format, etc.): don’t rely on prose alone — Cursor rules + Claude Code [deny settings / hooks](https://code.claude.com/docs/en/best-practices#enforce-the-rules-that-cant-have-exceptions). Path-only rules → `.claude/rules/` or Cursor globs; repeatable procedures → [skills](https://code.claude.com/docs/en/best-practices#put-team-procedures-in-skills).
 
 ## New project
 
@@ -37,14 +39,13 @@ Copy `AGENTS.md`, `CLAUDE.md` (symlink or copy), `.cursor/rules/`, and optionall
 
 ## Aligned with
 
-This template was **extracted from how I already run agents in real repos**, then checked against common docs — not designed by copying a guide first.
+Extracted from live repos, then checked against:
 
 | What we do | Matches |
 |---|---|
-| Root `AGENTS.md` sections (overview, build/test, style, testing, security, extra workflow) | [agents.md](https://agents.md/) “Cover what matters” |
+| `AGENTS.md` overview / build-test / style / testing / security / extras | [agents.md](https://agents.md/) “Cover what matters” |
+| Short map; only what code can’t show; scoped checks | [Claude Code best practices](https://code.claude.com/docs/en/best-practices) |
+| Spec/brief → fresh implement; pass/fail checks; hooks for no-exception rules | Same Claude BP pillars (visibility, verifiable checks, deterministic enforce) |
 | `.cursor/rules` + `AGENTS.md` | [Cursor Rules](https://cursor.com/docs/rules) |
-| Short always-on map; scoped tests by default | [Claude Code best practices](https://code.claude.com/docs/en/best-practices) |
-| One map, `CLAUDE.md` symlink | Claude Code reads `CLAUDE.md`; avoid two sources of truth |
-| Brief → `@` → scoped accept | Same engineering loop as “beyond vibe coding” write-ups, e.g. [Vonage](https://developer.vonage.com/en/blog/beyond-vibe-coding-best-practices-2026) |
 
-**One-liner if asked:** *I pulled this from my day-to-day agent workflow in real projects; it lines up with the AGENTS.md convention and Cursor / Claude Code guidance (checked-in map + rules, task briefs, scoped acceptance).*
+**One-liner if asked:** *I use a short checked-in agent map and task briefs with executable acceptance in real projects; it matches the AGENTS.md format and Claude Code / Cursor guidance (what code can’t show, verifiable checks, hard rules via deny/hooks — not prose alone).*
