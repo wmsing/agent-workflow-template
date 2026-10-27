@@ -1,18 +1,18 @@
 # Agent workflow template
 
-Reusable AI coding-agent setup for Cursor / Claude Code (and similar).
+This is the agent setup I actually use on day-to-day coding work (Cursor / Claude Code): scope map, safety rules, and per-feature briefs so agents don’t need re-explaining every session.
 
-Clone this repo as a new project skeleton, or copy the files into an existing repo so the team shares one workflow.
+Pulled out of live repos as a reusable base — clone for a new project, or copy into an existing one so the team shares the same workflow.
 
 ## What's included
 
 | Path | Role |
 |---|---|
 | `AGENTS.md` | Agent map: scope, key files, default acceptance |
-| `CLAUDE.md` | Same map for Claude Code (kept in sync with `AGENTS.md`) |
+| `CLAUDE.md` | Same map for Claude Code (keep in sync with `AGENTS.md`) |
 | `.cursor/rules/llm-agent-safety.mdc` | Always-on safety (secrets, destructive shell, HITL) |
 | `.cursor/rules/project.md` | Project acceptance commands + bans (fill in) |
-| `docs/spec/task_TEMPLATE.md` | One-task brief template agents `@` mention |
+| `docs/spec/task_TEMPLATE.md` | One-task brief; agents `@` the filled-in `task_*.md` |
 
 ## New project
 
@@ -24,7 +24,7 @@ cd my-app
 rm -rf .git && git init
 ```
 
-Then edit placeholders marked `TODO` in `AGENTS.md`, `CLAUDE.md`, and `.cursor/rules/project.md`.
+Fill the `TODO`s in `AGENTS.md`, `CLAUDE.md`, and `.cursor/rules/project.md` (paths, lint/test commands, MCP list).
 
 ## Existing project
 
@@ -32,18 +32,18 @@ Copy into the repo root:
 
 - `AGENTS.md`, `CLAUDE.md`
 - `.cursor/rules/`
-- `docs/spec/task_TEMPLATE.md` (optional; keep writing `docs/spec/task_*.md` per feature)
+- `docs/spec/task_TEMPLATE.md` (then keep writing real `docs/spec/task_*.md` per feature)
 
-Commit so every teammate and every agent session gets the same map.
+Commit so every teammate and every agent session reads the same map.
 
-## MCP (optional)
+## MCP
 
-MCP servers are configured **locally** (Cursor Settings / Claude Desktop) — do **not** commit tokens.
+MCP servers stay in local Cursor / Claude Desktop settings — never commit tokens.
 
-Document which MCPs this project expects in `AGENTS.md` → **MCP** section (e.g. GitHub for PRs, browser for UI checks). Each person connects their own account.
+If the project expects certain connectors, list them under **MCP** in `AGENTS.md` (allowed vs forbidden). Each person connects their own account.
 
-## Team use
+## How we use it
 
-1. These files live in git → one source of truth.
-2. Feature work goes through `docs/spec/task_*.md` (goal / non-goals / files / acceptance).
-3. Default tests = **scoped** to the change; full suite only when someone asks.
+1. Files live in git → shared source of truth.
+2. Non-trivial features get a `docs/spec/task_*.md` (goal / non-goals / files / acceptance) before the agent runs.
+3. Default acceptance = **scoped** tests for the change; full suite only when someone asks.
